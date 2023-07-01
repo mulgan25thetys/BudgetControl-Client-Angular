@@ -7,6 +7,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
+import { PageHeadingComponent } from './page-heading/page-heading.component';
 
 
 @NgModule({
@@ -15,12 +16,13 @@ import { LoaderComponent } from './loader/loader.component';
     SidebarComponent,
     HeaderComponent,
     FooterComponent,
-    LoaderComponent
+    LoaderComponent,
+    PageHeadingComponent
   ],
   imports: [
     CommonModule,
     ElementsRoutingModule
   ],
-  exports: [ SidebarComponent, HeaderComponent, FooterComponent, LoaderComponent]
+  exports: [ SidebarComponent, HeaderComponent, FooterComponent, LoaderComponent, PageHeadingComponent]
 })
 export class ElementsModule { }

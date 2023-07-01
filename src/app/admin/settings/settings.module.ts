@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { SettingsComponent } from './settings.component';
 import { DevisesComponent } from './devises/devises.component';
+import { ElementsModule } from 'src/app/elements/elements.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { DevisesComponent } from './devises/devises.component';
   ],
   imports: [
     CommonModule,
-    SettingsRoutingModule
+    SettingsRoutingModule,
+    ElementsModule
   ]
 })
 export class SettingsModule { }

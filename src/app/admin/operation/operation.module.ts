@@ -5,6 +5,7 @@ import { OperationRoutingModule } from './operation-routing.module';
 import { OperationComponent } from './operation.component';
 import { AddComponent } from './add/add.component';
 import { HistoryComponent } from './history/history.component';
+import { ElementsModule } from 'src/app/elements/elements.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { HistoryComponent } from './history/history.component';
   ],
   imports: [
     CommonModule,
-    OperationRoutingModule
+    OperationRoutingModule,
+    ElementsModule
   ]
 })
 export class OperationModule { }
