@@ -7,7 +7,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
-import { PageHeadingComponent } from './page-heading/page-heading.component';
+import { PageheaderComponent } from './pageheader/pageheader.component';
+import { MenusComponent } from './menus/menus.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -17,12 +19,14 @@ import { PageHeadingComponent } from './page-heading/page-heading.component';
     HeaderComponent,
     FooterComponent,
     LoaderComponent,
-    PageHeadingComponent
+    PageheaderComponent,
+    MenusComponent
   ],
   imports: [
     CommonModule,
-    ElementsRoutingModule
+    ElementsRoutingModule,
+    FontAwesomeModule
   ],
-  exports: [ SidebarComponent, HeaderComponent, FooterComponent, LoaderComponent, PageHeadingComponent]
+  exports: [ SidebarComponent, HeaderComponent, FooterComponent, LoaderComponent, PageheaderComponent]
 })
 export class ElementsModule { }

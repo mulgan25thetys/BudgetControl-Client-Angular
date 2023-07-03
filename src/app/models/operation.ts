@@ -4,6 +4,7 @@ export class Operation {
     id
 	amount? :any;
 	object? :any;
+	slug? :any;
 	description? :any;
 	category? :any;
 	createdAt? :any;

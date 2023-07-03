@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import $ from "jquery";
 
 @Component({
   selector: 'app-header',
@@ -14,12 +13,6 @@ export class HeaderComponent implements OnInit {
   }
 
   showMobileMenus() {
-    if ($('#page-top').hasClass('sidebar-toggled')) {
-      $('#page-top').removeClass('sidebar-toggled')
-      $('#accordionSidebar').removeClass('toggled')
-    } else {
-      $('#page-top').addClass('sidebar-toggled')
-      $('#accordionSidebar').addClass('toggled')
-    }
+    
   }
 }

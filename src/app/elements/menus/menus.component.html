@@ -1,0 +1,47 @@
+<ul class="navbar-nav pt-lg-3">
+  <li
+    class="nav-item dropdown"
+    [ngClass]="menu?.children ? 'dropdown' : ''"
+    routerLinkActive="active"
+    *ngFor="let menu of menus"
+  >
+<a class="nav-link" *ngIf="!menu?.children" [routerLink]="[menu.link]">
+    <span class="nav-link-icon d-md-none d-lg-inline-block">
+        <fa-icon [icon]="menu.icon"></fa-icon>
+    </span>
+    <span class="nav-link-title">
+        {{ menu.name | titlecase }}
+    </span>
+</a>
+    <a
+      class="nav-link" *ngIf="menu?.children"
+      [ngClass]="menu?.children ? 'dropdown-toggle' : ''"
+      [href]="'#'+menu.name"
+      data-bs-toggle="dropdown"
+      data-bs-auto-close="false"
+      role="button"
+      aria-expanded="false"
+    >
+      <span class="nav-link-icon d-md-none d-lg-inline-block">
+        <fa-icon [icon]="menu.icon"></fa-icon>
+      </span>
+      <span class="nav-link-title">
+        {{ menu.name | titlecase }}
+      </span>
+    </a>
+    <div class="dropdown-menu">
+      <div class="dropdown-menu-columns">
+        <div class="dropdown-menu-column">
+          <a
+            class="dropdown-item"
+            [routerLink]="[childMenu.link]"
+            routerLinkActive="active"
+            *ngFor="let childMenu of menu.children"
+          >
+            {{childMenu.name | titlecase}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
