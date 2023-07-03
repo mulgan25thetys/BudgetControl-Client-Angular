@@ -1,1 +1,29 @@
-<p>devises works!</p>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover"  width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Region</th>
+                        <th>Currency</th>
+                        <th>Default</th>
+                        <th>Added At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let devise of devises">
+                        <td>{{devise?.region}}</td>
+                        <td>{{devise?.currency}}</td>
+                        <td *ngIf="devise?.default"><span class="badge badge-green">YES</span></td>
+                        <td *ngIf="!devise?.default"><span class="badge badge-red">NO</span></td>
+                        <td>{{devise?.createdAt | date}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

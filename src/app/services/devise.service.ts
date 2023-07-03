@@ -20,8 +20,8 @@ export class DeviseService {
 
   constructor(private http: HttpClient) { }
   
-  getAllDevises(): Observable<Devise[]> {
-    return this.http.get<Devise[]>(this.api_url)
+  getAllDevises(): Observable<any> {
+    return this.http.get<any>(this.api_url)
   }
   getDefault(): Observable<any> {
     return this.http.get<any>(this.api_url + 'default')
@@ -29,8 +29,8 @@ export class DeviseService {
   getOne(id: number): Observable<any> {
     return this.http.get<any>(this.api_url + id)
   }
-  getAllRegions(): Observable<any[]> {
-    return this.http.get<any[]>(this.api_url+'regions')
+  getAllRegions(): Observable<any> {
+    return this.http.get<any>(this.api_url+'regions')
   }
   deleteDevise(id :number): Observable<any>{
     return this.http.delete<any>(this.api_url+id)

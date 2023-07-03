@@ -1,10 +1,10 @@
-import { Capital } from './capital';
+import { Devise } from './devise';
 export class Economie {
     id ? :any;
     amount	? :any;
     description	? :any;
     createdAt	? :any;
     updatedAt? :any;
-    CapitalId?: any;
-    Capital?: Capital
+    DeviseId?: any;
+    Devise?: Devise;
 }

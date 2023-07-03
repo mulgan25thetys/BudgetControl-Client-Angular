@@ -5,6 +5,7 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { SettingsComponent } from './settings.component';
 import { DevisesComponent } from './devises/devises.component';
 import { ElementsModule } from 'src/app/elements/elements.module';
+import {DataTablesModule} from 'angular-datatables';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ElementsModule } from 'src/app/elements/elements.module';
   imports: [
     CommonModule,
     SettingsRoutingModule,
-    ElementsModule
+    ElementsModule,
+    DataTablesModule
   ]
 })
 export class SettingsModule { }

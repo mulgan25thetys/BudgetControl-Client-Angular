@@ -1,4 +1,4 @@
-import { Capital } from './capital';
+import { Devise } from './devise';
 import { Files } from './files';
 export class Operation {
     id
@@ -8,7 +8,7 @@ export class Operation {
 	category? :any;
 	createdAt? :any;
 	updatedAt? :any;
-    CapitalId?: any;
-    Capital?: Capital
+    DeviseId?: any;
+    Devise?: Devise;
     Files?: Files[]
 }

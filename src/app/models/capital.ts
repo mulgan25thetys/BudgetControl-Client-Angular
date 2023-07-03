@@ -1,6 +1,4 @@
 import { Devise } from "./devise";
-import { Operation } from './operation';
-import { Economie } from './economie';
 
 export class Capital {
     id ? :any;
@@ -9,6 +7,4 @@ export class Capital {
     updatedAt? :any;
     DeviseId?: any;
     Devise?: Devise
-    Operations?: Operation[]
-    Economies?: Economie[]
 }
