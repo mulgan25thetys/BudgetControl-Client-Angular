@@ -1,0 +1,83 @@
+<!-- Page title actions -->
+<div class="container-xl">
+    <!-- Page title -->
+    <div class="page-header d-print-none">
+        <app-pageheader [pageTitle]="'devises'"></app-pageheader>
+    </div>
+</div>
+<div class="page-body">
+    <div class="container-xl">
+        
+        <div class="col-12">
+            <app-add-devises (modalEmitter)="onEmitDevise($event)"></app-add-devises>
+        </div>
+        
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">{{tableName | titlecase}}</h3>
+                    
+                </div>
+                <div class="card-body border-bottom py-3">
+                    <div class="d-flex">
+                        <div class="text-muted">
+                            Show
+                            <div class="mx-2 d-inline-block">
+                                <input type="number" (keyup.enter)="showByNumber()" [(ngModel)]="numberPerPage" class="form-control form-control-sm" value="10" size="3"
+                                    aria-label="Invoices count">
+                            </div>
+                            entries
+                        </div>
+                        <div class="ms-auto text-muted">
+                            Search:
+                            <div class="ms-2 d-inline-block">
+                                <input type="text" (keyup.enter)="filterDevise()" [(ngModel)]="search" class="form-control form-control-sm" aria-label="Search invoice">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table card-table table-vcenter text-nowrap datatable">
+                        <thead>
+                            <tr>
+                                <th *ngFor="let label of tableLabels">{{label?.name | titlecase}}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let devise of devises, let j= index">
+            
+                                <td> {{devise.currency}}</td>
+
+                                <td> <i class="flag" [ngClass]="['flag-country-'+devise.iso2]"></i> {{devise.region}}</td>
+                                <td *ngIf="devise.default"><label class="form-check form-switch" style="cursor: pointer;">
+                                    <input class="form-check-input" type="checkbox" checked>
+                                </label></td>
+                                <td *ngIf="!devise.default"><label class="form-check form-switch" style="cursor: pointer;">
+                                    <input class="form-check-input" type="checkbox" (click)="setToDefault(devise.id)">
+                                </label></td>
+                                <td> {{devise.createdAt | date}}</td>
+            
+                                <td class="text-end">
+                                    <span class="dropdown">
+                                        <button class="btn align-text-top" (click)="delete(devise.id)">Delete</button>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <app-pagination [currentUrl]="url" [pager]="pager" [showingEntries]="true"></app-pagination>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal button -->
+<button href="#" id="showModal" class="btn d-none" data-bs-toggle="modal" data-bs-target="#modaldialog">
+    Show modal
+</button>
+<!-- import modal dialog -->
+<app-dialog-modal (modalEmitter)="onModalEmit($event)" [type]="modalType" [action]="modalAction" [message]="modalMessage" [withCancel]="true"></app-dialog-modal>

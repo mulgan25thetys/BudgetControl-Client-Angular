@@ -1,0 +1,42 @@
+<div class="card-footer d-flex align-items-center" [ngClass]="footerClass">
+<p  *ngIf="showingEntries" class="text-muted mr-5">Showing <span>{{pager?.startIndex}}</span> to <span>{{pager?.endIndex}}</span> of
+    <span>{{pager?.totalItems}}</span> entries
+</p>
+    <ul class="pagination" [ngClass]=" showingEntries? 'm-0 ms-auto' : ''" *ngIf="pager?.pages && pager?.pages.length">
+
+        <li class="page-item" [ngClass]="{disabled:pager?.currentPage === 1}">
+            <a class="page-link page-link-prev" [routerLink]="[currentUrl]"
+                [queryParams]="{ page: pager?.currentPage - 1 }">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <polyline points="15 6 9 12 15 18" />
+                </svg>
+                Prev
+            </a>
+        </li>
+
+        <li class="page-item active" [ngClass]="{disabled:pager?.currentPage === 1}" aria-current="page">
+            <a class="page-link" [routerLink]="[currentUrl]" [queryParams]="{ page: 1 }">1</a>
+        </li>
+
+        <li class="page-item" *ngFor="let page of pager?.pages" [ngClass]="{active:pager?.currentPage === page}">
+            <a class="page-link" [routerLink]="[currentUrl]" [queryParams]="{ page: page }">{{page}}</a>
+        </li>
+
+        <li class="page-item" [ngClass]="{disabled:pager?.currentPage === pager?.totalPages}">
+            <a class="page-link page-link-next" [routerLink]="[currentUrl]"
+                [queryParams]="{ page: pager?.currentPage + 1 }" aria-label="Next">
+                Next
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <polyline points="9 6 15 12 9 18" />
+                </svg>
+            </a>
+        </li>
+        <li [ngClass]="{disabled:pager?.currentPage === pager?.totalPages}" class="page-item last-item">
+            <a [routerLink]="[currentUrl]" [queryParams]="{ page: pager?.totalPages }" class="page-link">Last</a>
+        </li>
+    </ul>
+</div>
