@@ -2,6 +2,7 @@ import { Devise } from './devise';
 import { Files } from './files';
 export class Operation {
     id
+	dateOperation? :any;
 	amount? :any;
 	object? :any;
 	slug? :any;
@@ -11,5 +12,6 @@ export class Operation {
 	updatedAt? :any;
     DeviseId?: any;
     Devise?: Devise;
-    Files?: Files[]
+	Files?: Files[];
+	formAction?: any;
 }

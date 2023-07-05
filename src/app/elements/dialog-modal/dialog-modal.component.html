@@ -1,7 +1,7 @@
 <div class="modal modal-blur fade" id="modaldialog" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
         <div class="modal-content">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" id="btn-close" class="btn-close d-none" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-status " [ngClass]="['bg-'+type]"></div>
             <div class="modal-body text-center py-4">
                 <!-- Download SVG icon from http://tabler-icons.io/i/alert-triangle -->
@@ -19,7 +19,7 @@
                     <circle cx="12" cy="12" r="9" />
                     <path d="M9 12l2 2l4 -4" />
                 </svg>
-                <h3>Are you sure?</h3>
+                <h3>{{title}}</h3>
                 <div class="text-muted">{{message}}</div>
             </div>
             <div class="modal-footer">
@@ -28,7 +28,7 @@
                         <div *ngIf="withCancel" class="col"><a href="#" class="btn w-100" data-bs-dismiss="modal">
                                 Cancel
                             </a></div>
-                        <div class="col"><a href="#" (click)="onActionEmit()" class="btn w-100" [ngClass]="['btn-'+type]" data-bs-dismiss="modal">
+                        <div class="col"><a role="link" style="cursor: pointer;" (click)="onActionEmit()" class="btn w-100" [ngClass]="['btn-'+type]">
                                 {{action | titlecase}}
                         </a></div>
                     </div> 

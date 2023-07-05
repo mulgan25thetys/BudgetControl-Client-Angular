@@ -1,1 +1,137 @@
-<p>add works!</p>
+<!-- Page title actions -->
+<div class="container-xl">
+  <!-- Page title -->
+  <div class="page-header d-print-none">
+    <app-pageheader [pageTitle]="'Add operation'"></app-pageheader>
+  </div>
+</div>
+<div class="page-body">
+  <div class="container-xl">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">{{ formName | titlecase }}</h3>
+        </div>
+        
+        <form #form="ngForm">
+            <div class="card-header" *ngIf="errorMessage !== ''">
+                <div class="alert alert-danger">
+                    {{errorMessage}}
+                </div>
+            </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-xl-6">
+                <div class="mb-3">
+                  <label class="form-label">Category </label>
+                  <select
+                    name="category"
+                    #category="ngModel"
+                    [(ngModel)]="operation.category"
+                    id=""
+                    class="form-control"
+                    required
+                    [class.is-invalid]="category.touched && operation.category== 'default'"
+                  >
+                    <option value="default">Select category</option>
+                    <option value="receipt">Receipt</option>
+                    <option value="expense">Expense</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Object </label>
+                  <input
+                    type="text"
+                    name="object"
+                    [class.is-invalid]="object.touched && object.invalid"
+                    #object="ngModel"
+                    [(ngModel)]="operation.object"
+                    class="form-control"
+                    placeholder="object.."
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Operation Date </label>
+                  <div class="input-icon mb-2">
+                    <input
+                      class="form-control"
+                      name="dateOperation"
+                      [(ngModel)]="operation.dateOperation"
+                      type="date"
+                      placeholder="Select a date"
+                      id="datepicker-icon"
+                      #dateOp="ngModel"
+                      [class.is-invalid]="dateOp.touched && dateOp.invalid"
+                      value="2020-06-20"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <app-manage-file [formAction]="operation.formAction"  (readFileEmiter)="readFileEmiter($event)" ></app-manage-file>
+              </div>
+              <div class="col-xl-6">
+                <div class="mb-3">
+                  <label class="form-label">Amount </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="amount"
+                    [(ngModel)]="operation.amount"
+                    min="0"
+                    #amount="ngModel"
+                    [class.is-invalid]="amount.touched && amount.invalid"
+                    step="0.001"
+                    placeholder="0.00.."
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Description </label>
+                  <textarea
+                    name="description"
+                    class="form-control"
+                    [(ngModel)]="operation.description"
+                    #descr="ngModel"
+                    [class.is-invalid]="descr.touched && descr.invalid"
+                    id=""
+                    cols="30"
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer d-flex align-items-center">
+            <button
+              [disabled]="form.invalid"
+              (click)="addOperation(form)"
+              type="button"
+              class="btn btn-primary"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

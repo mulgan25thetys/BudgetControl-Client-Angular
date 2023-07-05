@@ -27,6 +27,12 @@ export class OperationService {
   getOperation(id: number) :Observable<any>{
     return this.http.get<any>(this.api_url +id)
   }
+  getOperations(page: number, numberPerPage: number) :Observable<any>{
+    return this.http.get<any>(this.api_url + '?page=' + page + '&number=' + numberPerPage)
+  }
+  getOperationsByValue(page: number, numberPerPage: number, value: string) :Observable<any>{
+    return this.http.get<any>(this.api_url + '?page=' + page + '&number=' + numberPerPage + '&value=' + value)
+  }
 
   upload(file: File, id: any): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();

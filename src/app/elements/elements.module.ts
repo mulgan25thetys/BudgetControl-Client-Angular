@@ -13,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from './pagination/pagination.component';
 import { DialogModalComponent } from './dialog-modal/dialog-modal.component';
+import { ManageFileComponent } from './manage-file/manage-file.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { DialogModalComponent } from './dialog-modal/dialog-modal.component';
     PageheaderComponent,
     MenusComponent,
     PaginationComponent,
-    DialogModalComponent
+    DialogModalComponent,
+    ManageFileComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,6 @@ import { DialogModalComponent } from './dialog-modal/dialog-modal.component';
     FormsModule,
   ],
   exports: [SidebarComponent, HeaderComponent, FooterComponent, DialogModalComponent,
-    LoaderComponent, PageheaderComponent, PaginationComponent]
+    LoaderComponent, PageheaderComponent, PaginationComponent, ManageFileComponent]
 })
 export class ElementsModule { }

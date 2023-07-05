@@ -1,0 +1,19 @@
+<div class="mb-3">
+  <label class="form-label">Add File</label>
+  <div class="input-group input-group-flat">
+    <input
+      (change)="selectFile($event)"
+      type="file"
+      id="inputFile"
+      class="form-control"
+    />
+  </div>
+
+  <div *ngIf="OnFileLoad" class="progress my-3">
+      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+          attr.aria-valuenow="{{ progressOnFileLoad }}" aria-valuemin="0" aria-valuemax="100"
+          [ngStyle]="{ width: progressOnFileLoad + '%' }">
+          {{ progressOnFileLoad }}%
+      </div>
+  </div>
+</div>

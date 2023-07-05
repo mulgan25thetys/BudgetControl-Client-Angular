@@ -1,0 +1,79 @@
+<!-- Page title actions -->
+<div class="container-xl">
+    <!-- Page title -->
+    <div class="page-header d-print-none">
+        <app-pageheader [pageTitle]="'operation view'" [itemModule]="'operation'" [addingLink]="'/operations/new'"
+            [withAddingModuleButtonByLink]="true"></app-pageheader>
+    </div>
+</div>
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">{{operation.object}}</h3>
+                        
+                    </div>
+                    <div class="card-body border-bottom py-3">
+                        <div class="mb-3">
+                            <label for="category" [ngClass]=" operation.category=='receipt'?'bg-success':'bg-danger'" class="form-label p-1">
+                                <strong>{{operation.category | titlecase}}</strong></label>
+                            
+                        </div>
+                        <div class="mb-3">
+                            <label for="object" class="form-label">Object</label>
+                            <input type="text" [(ngModel)]="operation.object" class="form-control" placeholder="Search…" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="description" class="form-control" [(ngModel)]="operation.description" id="" cols="30" rows="10" readonly></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="form-label">Amount {{ operation.amount | currency:operation?.Devise?.currency:'symbol'}}</label>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Operation Date</label>
+                            <p>{{operation.dateOperation | date}}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <label for="files" class="form-label">Operation Files</label>
+                        <div class="card-table table-responsive">
+                            <table class="table table-vcenter">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Size</th>
+                                    </tr>
+                                </thead>
+                                <tr *ngFor="let file of operation?.Files">
+                                    <td>
+                                        /{{file.name}}
+                                        <a href="#" class="ms-1"
+                                            aria-label="Open website"><!-- Download SVG icon from http://tabler-icons.io/i/link -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                                                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+                                                <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+                                            </svg>
+                                        </a>
+                                    </td>
+                                    <td class="text-muted">{{file.size}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" (click)="backToList()" class="btn btn-primary"> Back to List</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+</div>

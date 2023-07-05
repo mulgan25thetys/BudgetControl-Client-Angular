@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-dialog-modal',
@@ -8,6 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class DialogModalComponent {
 
   @Input() message: string = ''
+  @Input() title: string = ''
   @Input() action: string = ''
   @Input() type: string = ''
   @Input() withCancel: Boolean = false
@@ -15,6 +17,19 @@ export class DialogModalComponent {
   @Output() modalEmitter = new EventEmitter<any>()
 
   onActionEmit() {
-    this.modalEmitter.emit('delete')
+    $("#btn-close").click()
+    setTimeout(() => {
+      switch (this.action) {
+      case 'confirm':
+        this.modalEmitter.emit('init')
+        break;
+      case 'delete':
+        this.modalEmitter.emit('delete')
+        break;
+      default:
+        this.modalEmitter.emit('init')
+        break;
+    }
+    }, 500);
   }
 }
