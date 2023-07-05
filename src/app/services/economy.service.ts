@@ -27,8 +27,11 @@ export class EconomyService {
   getEconomy(id: number): Observable<any> {
     return this.http.get<any>(this.api_url+ id)
   }
-  getEconomies() :Observable<any>{
-    return this.http.get<any>(this.api_url)
+  getEconomies(page: number, numberPerPage: number) :Observable<any>{
+    return this.http.get<any>(this.api_url + '?page=' + page + '&number=' + numberPerPage)
+  }
+  getEconomiesByValue(page: number, numberPerPage: number, value: string) :Observable<any>{
+    return this.http.get<any>(this.api_url + '?page=' + page + '&number=' + numberPerPage + '&value=' + value)
   }
   deleteEconomy(id: number) :Observable<any>{
     return this.http.delete<any>(this.api_url+id)

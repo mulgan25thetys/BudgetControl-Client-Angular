@@ -68,6 +68,7 @@ export class HistoryComponent implements OnInit {
       this.modalType = 'danger'
       this.modalAction = 'delete'
       this.modalTitle = 'Are you sure!'
+      this.modalWithCancel = true
       this.modalMessage = 'Operation: ' + res.data.object + ' will be deleted!'
       $("#showModal").click()
     }, (err: HttpErrorResponse) => {

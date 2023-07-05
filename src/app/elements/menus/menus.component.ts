@@ -32,7 +32,7 @@ export class MenusComponent implements OnInit {
       {
         name: 'economies', icon: faMoneyBillWave, link: this.adminRoute + '/economies',
         children: [
-          { name: 'list', link: this.adminRoute + '/economies/list'},
+          { name: 'my economies', link: this.adminRoute + '/economies/my-economies'},
           { name: 'new economy', link: this.adminRoute + '/economies/new'},
         ]
       },
