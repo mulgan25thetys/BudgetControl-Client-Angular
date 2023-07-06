@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ElementsModule } from '../elements/elements.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ElementsModule
+    ElementsModule,
+    FontAwesomeModule
   ]
 })
 export class AdminModule { }

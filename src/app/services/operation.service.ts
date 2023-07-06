@@ -27,8 +27,8 @@ export class OperationService {
   getOperation(id: number) :Observable<any>{
     return this.http.get<any>(this.api_url +id)
   }
-  getOperations(page: number, numberPerPage: number) :Observable<any>{
-    return this.http.get<any>(this.api_url + '?page=' + page + '&number=' + numberPerPage)
+  getOperations(page: number, numberPerPage: number, paginate: string) :Observable<any>{
+    return this.http.get<any>(this.api_url + '?page=' + page + '&number=' + numberPerPage + '&paginate=' + paginate)
   }
   getOperationsByValue(page: number, numberPerPage: number, value: string) :Observable<any>{
     return this.http.get<any>(this.api_url + '?page=' + page + '&number=' + numberPerPage + '&value=' + value)

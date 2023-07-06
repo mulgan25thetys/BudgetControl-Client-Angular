@@ -21,8 +21,8 @@ export class CapitalService {
     return this.http.get<any>(this.api_url + id)
   }
 
-  getAll(): Observable<any> {
-    return this.http.get<any>(this.api_url)
+  getAll(number: number): Observable<any> {
+    return this.http.get<any>(this.api_url + '?number=' + number)
   } 
 
   getWealth(): Observable<any> {

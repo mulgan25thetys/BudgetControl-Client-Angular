@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OperationComponent } from './operation/operation.component';
-import { EconomyComponent } from './economy/economy.component';
 import { SettingsComponent } from './settings/settings.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -15,13 +14,6 @@ const routes: Routes = [
     component: OperationComponent,
     children: [
       { path: 'operations', loadChildren: () => import('./operation/operation.module').then(m => m.OperationModule) }
-    ]
-  },
-  {
-    path: '',
-    component: EconomyComponent,
-    children: [
-       { path: 'economies', loadChildren: () => import('./economy/economy.module').then(m => m.EconomyModule) },
     ]
   },
   {

@@ -46,7 +46,7 @@ export class HistoryComponent implements OnInit {
   }
 
   getAll(page: number) {
-    this.opserve.getOperations(page, this.numberPerPage).subscribe(res => {
+    this.opserve.getOperations(page, this.numberPerPage,'yes').subscribe(res => {
       this.pager = res.data.pager
       this.operations = res.data.pageOfDatas
     }, (err: HttpErrorResponse) => {
