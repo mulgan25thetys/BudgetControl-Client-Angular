@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import * as $ from "jquery";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-manage-file',
@@ -37,9 +38,24 @@ export class ManageFileComponent implements OnInit {
     this.readURL(event)
 
     this.selectedFiles = event.target.files;
- 
+    const file = this.selectedFiles.item(0)
+    
+    if (file && !environment.fileMimeType.includes(file.name.split(".").pop())) {
+      this.hasError = true
+      this.message = "Only allow file extension: "+environment.fileMimeType.join(',')
+      this.fileEmiter.emit({hasError : this.hasError})
+    } 
+    else if (file && file.size > parseInt(environment.fileMaxSize.toString()) ) {
+      this.hasError = true
+      this.message = ' max size allowed: ' + environment.fileMaxSize
+      this.fileEmiter.emit({hasError : this.hasError})
+    } else {
+      this.hasError = false
+      this.fileEmiter.emit({ hasError: this.hasError })
+    }
+    
     this.readFileEmiter.emit({
-      selectedFiles: this.selectedFiles
+      selectedFiles: file? this.selectedFiles : null
     })
   }
 

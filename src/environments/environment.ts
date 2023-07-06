@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  fileMimeType: ['jpg', 'jpeg', 'png','txt', 'pdf'],
+  fileMaxSize: 2 * 1024 * 1024,
 };
 
 /*

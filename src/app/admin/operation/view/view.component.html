@@ -31,7 +31,7 @@
                             <textarea name="description" class="form-control" [(ngModel)]="operation.description" id="" cols="30" rows="10" readonly></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="amount" class="form-label">Amount {{ operation.amount | currency:operation?.Devise?.currency:'symbol'}}</label>
+                            <label for="amount" class="form-label">Amount <span class="text-muted fa-2x">{{ operation.amount | currency:operation?.Devise?.currency:'symbol'}}</span></label>
                         </div>
                         <div class="mb-3">
                             <label for="date" class="form-label">Operation Date</label>
@@ -40,6 +40,12 @@
                     </div>
                     
                     <div class="card-body">
+
+                        <app-manage-file (fileEmiter)="getFileMessage($event)" (readFileEmiter)="readFileEmiter($event)"></app-manage-file>
+                        <div class="mb-2">
+                            <button type="button" class="btn btn-success"  (click)="addFile(operation.id)" [disabled]="noReadyToUploadFile">Upload</button>
+                        </div>
+
                         <label for="files" class="form-label">Operation Files</label>
                         <div class="card-table table-responsive">
                             <table class="table table-vcenter">
@@ -47,23 +53,15 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Size</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tr *ngFor="let file of operation?.Files">
                                     <td>
-                                        /{{file.name}}
-                                        <a href="#" class="ms-1"
-                                            aria-label="Open website"><!-- Download SVG icon from http://tabler-icons.io/i/link -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
-                                                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
-                                                <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
-                                            </svg>
-                                        </a>
+                                        /<a [href]="'/api/operations/'+file.name" target="_blank">{{file.name}}</a>
                                     </td>
                                     <td class="text-muted">{{file.size}}</td>
+                                    <td > <span class="text-danger" role="link" style="cursor: pointer;" (click)="deleteFile(file.id)"><fa-icon [icon]="deleteIcon"></fa-icon></span></td>
                                 </tr>
                             </table>
                         </div>

@@ -46,7 +46,7 @@ export class HistoryComponent implements OnInit {
   }
 
   getAll(page: number) {
-    this.opserve.getOperations(page, this.numberPerPage,'yes').subscribe(res => {
+    this.opserve.getOperations(page, this.numberPerPage, 'yes').subscribe(res => {
       this.pager = res.data.pager
       this.operations = res.data.pageOfDatas
     }, (err: HttpErrorResponse) => {
@@ -82,6 +82,7 @@ export class HistoryComponent implements OnInit {
       this.modalType = 'success'
       this.modalAction = 'confirm'
       this.modalTitle = 'Succeed'
+      this.modalWithCancel = false
       $("#showModal").click()
     }, (err: HttpErrorResponse) => {
       this.modalMessage = err?.error?.message || err.statusText

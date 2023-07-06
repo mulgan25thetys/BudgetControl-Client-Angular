@@ -15,6 +15,7 @@ export class AddComponent implements OnInit {
   selectedFiles?: FileList;
  
   hasError: Boolean = false;
+  readyToUpload: Boolean = false;
   disabledVideoId: boolean = false;
   mustUploadFile: Boolean = false;
   errorMessage: string = ''
@@ -37,7 +38,6 @@ export class AddComponent implements OnInit {
       } else {
         this.onInit(form)
       }
-      this.toarstr.success(res.message, 'Add Operation')
     }, (err: HttpErrorResponse) => {
       if (err.status == 409) {
         this.toarstr.warning('Operation object is already exist!','Add  Operation')
@@ -49,7 +49,11 @@ export class AddComponent implements OnInit {
 
   readFileEmiter(event:any) {
     this.selectedFiles = event?.selectedFiles
-    this.mustUploadFile = event?.isReadyToUpload
+    this.readyToUpload = this.selectedFiles? true :false
+  }
+
+  getFileMessage(event: any) {
+    this.hasError = event.hasError
   }
 
   uploadFile(form:NgForm,selectedFiles:FileList, idModule: number): any {
@@ -59,11 +63,12 @@ export class AddComponent implements OnInit {
         let currentFile = file;
         
         this.opServe.upload(currentFile,idModule).subscribe(
-        () => {
+        (res) => {
             this.hasError = false
             this.onInit(form)
         },
           (err: HttpErrorResponse) => {
+          this.hasError = true
           sessionStorage.setItem('file_operation','not_upload')
           if (err?.error && err?.error.message) {
             this.errorMessage = err?.error.message;
@@ -71,15 +76,15 @@ export class AddComponent implements OnInit {
             this.errorMessage = 'Could not upload the file!';
           }
           currentFile = undefined;
-          this.hasError = true
-          window.scrollTo(0,0)
         })
   }
 
   onInit(form:NgForm) {
-    form.reset()
-    this.ngOnInit()
-    this.selectedFiles = null
-    this.router.navigate(['/operations/'])
+    if (!this.hasError) {
+      form.reset()
+      this.ngOnInit()
+      this.selectedFiles = null
+      this.router.navigate(['/operations/'])
+    }
   }
 }
