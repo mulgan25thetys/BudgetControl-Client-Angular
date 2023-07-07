@@ -44,4 +44,7 @@ export class DeviseService {
   setDefault(id: number): Observable<any>{
     return this.http.put<any>(this.api_url+id, null)
   }
+  getReport(): Observable<any> {
+    return this.http.get<any>(this.api_url+'reports')
+  }
 }

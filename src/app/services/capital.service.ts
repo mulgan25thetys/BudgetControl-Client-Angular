@@ -28,4 +28,8 @@ export class CapitalService {
   getWealth(): Observable<any> {
     return this.http.get<any>(this.api_url+'wealth')
   } 
+
+  getReport(): Observable<any> {
+    return this.http.get<any>(this.api_url+'reports')
+  } 
 }

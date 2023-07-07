@@ -3,7 +3,7 @@
 <div class="container-xl">
     <!-- Page title -->
     <div class="page-header d-print-none">
-        <app-pageheader [pageTitle]="'dashboard'" ></app-pageheader>
+        <app-pageheader [pageTitle]="'dashboard'" [itemModule]="'dashboard'" [withReport]="true" ></app-pageheader>
     </div>
 </div>
 <div class="page-body">
@@ -40,48 +40,10 @@
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 1%"></th>
-                                <th>Product</th>
-                                <th class="text-center" style="width: 1%">Qnt</th>
-                                <th class="text-end" style="width: 1%">Unit</th>
-                                <th class="text-end" style="width: 1%">Amount</th>
+                                <th>Receipt</th>
+                                <th class="text-end" style="width: 1%">Expenses</th>
                             </tr>
                         </thead>
-                        <tr>
-                            <td class="text-center">1</td>
-                            <td>
-                                <p class="strong mb-1">Logo Creation</p>
-                                <div class="text-muted">Logo and business cards design</div>
-                            </td>
-                            <td class="text-center">
-                                1
-                            </td>
-                            <td class="text-end">$1.800,00</td>
-                            <td class="text-end">$1.800,00</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">2</td>
-                            <td>
-                                <p class="strong mb-1">Online Store Design &amp; Development</p>
-                                <div class="text-muted">Design/Development for all popular modern browsers</div>
-                            </td>
-                            <td class="text-center">
-                                1
-                            </td>
-                            <td class="text-end">$20.000,00</td>
-                            <td class="text-end">$20.000,00</td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">3</td>
-                            <td>
-                                <p class="strong mb-1">App Design</p>
-                                <div class="text-muted">Promotional mobile application</div>
-                            </td>
-                            <td class="text-center">
-                                1
-                            </td>
-                            <td class="text-end">$3.200,00</td>
-                            <td class="text-end">$3.200,00</td>
-                        </tr>
                         <tr>
                             <td colspan="4" class="strong text-end">Subtotal</td>
                             <td class="text-end">$25.000,00</td>

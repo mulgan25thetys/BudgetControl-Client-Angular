@@ -48,4 +48,7 @@ export class OperationService {
   deleteFile(id: number) :Observable<any>{
     return this.http.delete<any>(this.api_url+ 'files/' +id)
   }
+  getReport(): Observable<any> {
+    return this.http.get<any>(this.api_url+'reports')
+  }
 }

@@ -13,4 +13,7 @@ export class SystemService {
   get_system_info() : Observable<any>{
     return this.http.get<any>(this.api_url+'system')
   }
+  getReport(controller:string): Observable<any> {
+    return this.http.get<any>(this.api_url + 'api/' + controller + '/' + 'reports')
+  }
 }
